@@ -4,18 +4,19 @@
 {% block page_content %}
     <link rel="stylesheet" type="text/css" href="{% static "style/app.css" %}">
     <div class="App">
-        <h1>Hello, World!</h1>
+
         <div class="row">
             <div class="col-md-4">
             </div>
         <div class="col-md-4">
-            <div class="card mb-2">
-                <img class="card-img-top" src="{% static "img/spotify-logo.png" %}" alt="logo" width="100%">
-            </div>
+
+                <img class="app-logo" src="{% static "img/spotify-logo.png" %}" alt="logo" width="100%" format="PNG" THUMBNAIL_PRESERVE_FORMAT=True>
+
+            <div class="label-item">
              <!-- category -->
-            <form action="/SearchOptions/" method="post">{% csrf_token %}
+            <form action="/SearchOptions/" method="post" class="form-submit">{% csrf_token %}
                 <div class="fieldWrapper">
-                    <label for="id_category">Choose an Item</label>
+                    <label for="id_category" class="label-item" style="color:whitesmoke">Choose an Item</label>
                     <select type="text" className="searchselect">
                         <option selected>Playlist</option>
                         <option>Album</option>
@@ -24,6 +25,7 @@
                     </select>
                 </div>
             </form>
+            </div>
         </div>
         </div>
         </div>

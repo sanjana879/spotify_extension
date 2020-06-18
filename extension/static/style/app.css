@@ -4,6 +4,12 @@
     width: 100%;
 }
 
+.app-logo {
+    height: 50vmin;
+	width: 50vmin;
+
+}
+
 .col-md-4 {
     position: relative;
     text-align: center;
@@ -11,4 +17,13 @@
 }
 h1 {
     color: blue;
+}
+
+.label-item {
+    color: #1ED760;
+    font-family: "Palatino";
+    position: fixed;
+    align-content: center;
+    margin-left: -100px;
+    font-size: calc(20px + 2vmin);
 }
