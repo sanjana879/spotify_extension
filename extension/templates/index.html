@@ -16,13 +16,25 @@
              <!-- category -->
             <form action="/SearchOptions/" method="post" class="form-submit">{% csrf_token %}
                 <div class="fieldWrapper">
-                    <label for="id_category" class="label-item" style="color:whitesmoke">Choose an Item</label>
+                    <label for="id_category" class="label-item" style="color:whitesmoke">Choose an Item
+                        <br>
                     <select type="text" className="searchselect">
                         <option selected>Playlist</option>
                         <option>Album</option>
                         <option>Artist</option>
 
                     </select>
+                    </label>
+                    <br>
+                    <label style="color:whitesmoke"> Name: </label> <br>
+                    <input
+                                    type="text"
+                                    className="search-name"
+                    />
+                    <br>
+                    <br>
+                    <button type="submit" name='search-for' value='search'>Search</button>
+
                 </div>
             </form>
             </div>

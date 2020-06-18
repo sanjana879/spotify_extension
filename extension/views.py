@@ -14,6 +14,9 @@ class HomePageView(TemplateView):
     template_name = "index.html"
     success_url = '/awesome/'
     form_class = SearchForm
+    if 'search-for' in request.POST:
+        if 'search' == request.POST.get('search-for'):
+            pass
 
     def form_valid(self, form):
         return HttpResponse("Sweeeeeet.")
