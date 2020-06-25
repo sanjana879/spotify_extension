@@ -1,8 +1,10 @@
 
 from django.conf.urls import url
 from extension import views
-
+from django.views.generic import TemplateView
 urlpatterns = [
-    url(r'^$', views.HomePageView.as_view()),
-    #url(r'^about/$', views.AboutPageView.as_view()), # Add this /about/ route
+    #url(r'^results/$', views.SearchOptions.as_view()),
+    url(r'^$', views.home_page),
+    url(r'^results/$', views.search),  # Add this /about/ route
 ]
+
