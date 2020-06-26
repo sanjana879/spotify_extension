@@ -2,12 +2,24 @@
 {% load static %}
 
 {% block page_content %}
-    <html>
+    <div class="App">
+        <link rel="stylesheet" type="text/css" href="{% static "style/results.css" %}">
 
-   <body>
-      You are : <strong>{{cd}}</strong>
-   </body>
+            <header className="App-header">
+                        <img src="{% static "img/spotify-logo.png" %}" className="App-logo" alt="logo"/>
 
-</html>
+                        <h1 className="title-dash">{{cd}}</h1>
+                        <h1 className="title-dash-2">Analysis</h1>
+
+            </header>
+       <div className="info-body">
+
+       <strong>{{cd}}</strong>
+       {{ names }}
+       {{ artists }}
+       </body>
+           </div>
+    </div>
+
 
 {% endblock %}

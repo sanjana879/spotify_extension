@@ -5,7 +5,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render
 from django.shortcuts import render
-
+from .api_py import search_results
 # Create your views here.
 from django.shortcuts import render
 from django.views.generic import TemplateView
@@ -41,8 +41,9 @@ def search(request):
         form = StartForm(request.GET)
     if form.is_valid():
         cd = form.cleaned_data
+        names, artists = search_results.search_res()
         # assert False
-        return render(request, 'results.html', {'cd': cd, 'submitted': submitted})
+        return render(request, 'results.html', {'cd': cd['option'], 'names': names, 'artists':artists})
     else:
         form = StartForm()
     if 'submitted' in request.GET:

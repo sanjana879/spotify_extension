@@ -1,0 +1,56 @@
+.App {
+    text-align: center;
+    background-color: #343434;
+}
+
+.App-header {
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    margin-right: 1350px;
+    color: #343434;
+    height: 100px;
+}
+.App-logo {
+    height: 10vmin;
+    pointer-events: none;
+
+    box-shadow: blue;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.info-body {
+    text-align: center;
+    background-color: #343434;
+    height: 645px;
+}
+.title-dash {
+    color: #1ED760;
+    margin-left: 301px;
+    margin-top: -201px;
+    display: inline;
+    font-family: "Palatino";
+    font-size: calc(20px + 2vmin);
+
+}
+.title-dash-2 {
+    color: #1ED760;
+    margin-left: 600px;
+    margin-top: -64px;
+    display: inline;
+    font-family: "Palatino";
+    font-size: calc(20px + 2vmin);
+
+}
+
+.menu {
+    width: 800px;
+}
