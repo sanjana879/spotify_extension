@@ -1,24 +1,19 @@
 .App {
-    text-align: center;
     background-color: #343434;
+    height: 100%;
+    width: 100%;
+    text-decoration-color: white;
 }
 
-.App-header {
-    min-height: 10vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: left;
-    font-size: calc(10px + 2vmin);
-    margin-right: 1350px;
-    color: #343434;
-    height: 100px;
-}
-.App-logo {
-    height: 10vmin;
-    pointer-events: none;
+.app-logo {
+    height: 15vmin;
+	width: 15vmin;
 
-    box-shadow: blue;
+}
+
+.app-header {
+    background-color: blue;
+    max-height: 30vm;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,11 +21,10 @@
         animation: App-logo-spin infinite 20s linear;
     }
 }
-
-.info-body {
-    text-align: center;
-    background-color: #343434;
-    height: 645px;
+.page-title {
+    color: #1ED760;
+    margin-top:-80px;
+    margin-left: 150px;
 }
 .title-dash {
     color: #1ED760;
@@ -51,6 +45,12 @@
 
 }
 
-.menu {
-    width: 800px;
+.display-results {
+    margin-top: 40px;
+    color: white;
+}
+
+.result-item {
+
+    padding: 10px;
 }

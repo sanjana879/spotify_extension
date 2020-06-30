@@ -2,24 +2,38 @@
 {% load static %}
 
 {% block page_content %}
+    <link rel="stylesheet" type="text/css" href="{% static "style/results.css" %}">
     <div class="App">
-        <link rel="stylesheet" type="text/css" href="{% static "style/results.css" %}">
 
-            <header className="App-header">
-                        <img src="{% static "img/spotify-logo.png" %}" className="App-logo" alt="logo"/>
+        <div class="row">
+            <div class="col-md-5">
+                <img class="app-logo" src="{% static "img/spotify-logo.png" %}" alt="logo" width="100%" format="PNG" THUMBNAIL_PRESERVE_FORMAT=True>
+                <div class="page-title"><h1>{{option}} Results </h1></div>
+                <br>
+            <div class="display-results" style="color: white">
+            <form action="/dashboard/" method="get" class="form-choose"> {% csrf_token %}
+                {% for name,artist in zipped %}
+                    <div class="result-item">
+                <tr>
+                    <button name='{{ name }}-item' value={{ name }} type='submit'>
+                    <td>{{ name }} </t>{{ artist }}</td>
+                    </button>
+                    <br>
 
-                        <h1 className="title-dash">{{cd}}</h1>
-                        <h1 className="title-dash-2">Analysis</h1>
+                </tr>
+                     </div>
+                {% endfor %}
+            </form>
+            </div>
+            </div>
+            <div class="col-md-5">
+                <h1 style="color: #1ED760"> {{ title }}</h1>
 
-            </header>
-       <div className="info-body">
 
-       <strong>{{cd}}</strong>
-       {{ names }}
-       {{ artists }}
-       </body>
-           </div>
+            </div>
+        </div>
+        </div>
     </div>
 
-
 {% endblock %}
+

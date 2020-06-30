@@ -10,6 +10,7 @@ from .api_py import search_results
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from.forms import SearchForm, StartForm
+from .models import Results
 from django.http import HttpResponse, HttpResponseRedirect
 
 
@@ -41,12 +42,25 @@ def search(request):
         form = StartForm(request.GET)
     if form.is_valid():
         cd = form.cleaned_data
-        names, artists = search_results.search_res()
+        names, artists, images = search_results.search_res(cd['option'], cd['name'])
+        # add to database
+        for name in names:
+            post = Results()
+            post.name = name
+            #post.artist = artist
+            #post.img = img
+            #post.save()
         # assert False
-        return render(request, 'results.html', {'cd': cd['option'], 'names': names, 'artists':artists})
+        mylist = zip(names, artists)
+
+        return render(request, 'results.html', {'option': cd['option'], 'title': cd['name'], 'names': names, 'artists': artists, 'zipped': mylist})
     else:
         form = StartForm()
     if 'submitted' in request.GET:
         submitted = True
 
     return render(request, 'results.html', {'cd': form, 'submitted': submitted})
+
+
+def choose(self, request):
+    
