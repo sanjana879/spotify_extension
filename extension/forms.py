@@ -28,6 +28,9 @@ class StartForm(forms.Form):
     option = forms.CharField(max_length=10)
     name = forms.CharField(max_length=20)
 
+class ResultForm(forms.Form):
+    btn = forms.CharField()
+
 def search(self, request):
     submitted = False
     if request.method == 'POST':

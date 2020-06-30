@@ -9,7 +9,7 @@ from .api_py import search_results
 # Create your views here.
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from.forms import SearchForm, StartForm
+from.forms import SearchForm, StartForm, ResultForm
 from .models import Results
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -42,7 +42,7 @@ def search(request):
         form = StartForm(request.GET)
     if form.is_valid():
         cd = form.cleaned_data
-        names, artists, images = search_results.search_res(cd['option'], cd['name'])
+        names, artists, images, uris = search_results.search_res(cd['option'], cd['name'])
         # add to database
         for name in names:
             post = Results()
@@ -51,9 +51,9 @@ def search(request):
             #post.img = img
             #post.save()
         # assert False
-        mylist = zip(names, artists)
+        mylist = zip(names, artists, uris)
 
-        return render(request, 'results.html', {'option': cd['option'], 'title': cd['name'], 'names': names, 'artists': artists, 'zipped': mylist})
+        return render(request, 'results.html', {'option': cd['option'], 'title': cd['name'], 'names': names, 'artists': artists, 'zipped': mylist, 'uris': uris})
     else:
         form = StartForm()
     if 'submitted' in request.GET:
@@ -62,5 +62,17 @@ def search(request):
     return render(request, 'results.html', {'cd': form, 'submitted': submitted})
 
 
-def choose(self, request):
-    
+def choose(request):
+
+    if request.method == 'GET':
+        form = ResultForm(request.GET)
+    print("once upon a time", form)
+    if form.is_valid():
+        val = form.cleaned_data.get("btn")
+        print("hereeeee", val)
+        return render(request, 'dashboard.html', {'name': val})
+    else:
+        form = ResultForm()
+    return render(request, 'dashboard.html', locals())
+
+

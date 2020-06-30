@@ -12,10 +12,10 @@
                 <br>
             <div class="display-results" style="color: white">
             <form action="/dashboard/" method="get" class="form-choose"> {% csrf_token %}
-                {% for name,artist in zipped %}
+                {% for name,artist,uri in zipped %}
                     <div class="result-item">
                 <tr>
-                    <button name='{{ name }}-item' value={{ name }} type='submit'>
+                    <button name='btn' value={{ uri }} type='submit'>
                     <td>{{ name }} </t>{{ artist }}</td>
                     </button>
                     <br>

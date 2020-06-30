@@ -7,8 +7,8 @@ def search_res(t,name):
     SPOTIPY_CLIENT_SECRET = '87a104cdb69049559cda01f158e524bd'
     SPOTIPY_REDIRECT_URI = 'http://localhost:8000/callback'
 
-    type_name = t
-    query = name
+    type_name = 'album'#t
+    query = 'Lover'#name
     limit = 10
     auth = oauth2.SpotifyClientCredentials(
         client_id=SPOTIPY_CLIENT_ID,
@@ -21,12 +21,14 @@ def search_res(t,name):
     names = []
     artists = []
     images = []
+    ids = []
     if type_name == 'album' or type_name == 'Album':
         for i in range(0,7):
             artists.append(results['albums']['items'][i]['artists'][0]['name'])
             names.append(results['albums']['items'][i]['name'])
+            ids.append(results['albums']['items'][i]['uri'])
             images.append(results['albums']['items'][i]['images'][0]['url'] )
-            print(results['albums']['items'][i]['images'][0]['url'])
-    return names, artists, images
+            print(results['albums']['items'][i]['uri'])
+    return names, artists, images, ids
 
 #print(results['albums']['items'][0]['artists'][0]['name'])
