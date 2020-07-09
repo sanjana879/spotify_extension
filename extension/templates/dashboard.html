@@ -1,10 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>You are <strong>{{ name }} </strong></p>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+    <link rel="stylesheet" type="text/css" href="{% static "style/results.css" %}">
+    <div class="App">
+
+        <div class="row">
+            <div class="col-md-5">
+                <img class="app-logo" src="{% static "img/spotify-logo.png" %}" alt="logo" width="100%" format="PNG" THUMBNAIL_PRESERVE_FORMAT=True>
+                <div class="page-title"><h1>{{option}} Analysis </h1></div>
+                <br>
+            <div class="display-results" style="color: white">
+
+
+                    <div class="result-item">
+                <tr><td>{{ name}} </td></tr>
+                    </div>
+
+
+            </form>
+            </div>
+            </div>
+            <div class="col-md-5">
+                <h1 style="color: #1ED760"> {{ title }}</h1>
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+{% endblock %}
+

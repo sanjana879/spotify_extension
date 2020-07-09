@@ -5,14 +5,14 @@ from django.shortcuts import render
 # Create your views here.
 from django.shortcuts import render
 from django.shortcuts import render
-from .api_py import search_results
+from .api_py import search_results, analysis
 # Create your views here.
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from.forms import SearchForm, StartForm, ResultForm
 from .models import Results
 from django.http import HttpResponse, HttpResponseRedirect
-
+from extension.api_py.main import analyze
 
 class HomePageView(TemplateView):
     template_name = "index.html"
@@ -36,12 +36,17 @@ class SearchOptions(TemplateView):
 def home_page(request):
     return render(request, "index.html", {'form': StartForm()})
 
+
+global type_option;
+
 def search(request):
     submitted = False
     if request.method == 'GET':
         form = StartForm(request.GET)
     if form.is_valid():
         cd = form.cleaned_data
+        global type_option
+        type_option = cd['option']
         names, artists, images, uris = search_results.search_res(cd['option'], cd['name'])
         # add to database
         for name in names:
@@ -66,11 +71,12 @@ def choose(request):
 
     if request.method == 'GET':
         form = ResultForm(request.GET)
-    print("once upon a time", form)
+
     if form.is_valid():
         val = form.cleaned_data.get("btn")
-        print("hereeeee", val)
-        return render(request, 'dashboard.html', {'name': val})
+        print(type_option)
+        music_features = analyze(val, type_option)
+        return render(request, 'dashboard.html', {'name': music_features})
     else:
         form = ResultForm()
     return render(request, 'dashboard.html', locals())

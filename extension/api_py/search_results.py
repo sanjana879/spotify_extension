@@ -7,8 +7,8 @@ def search_res(t,name):
     SPOTIPY_CLIENT_SECRET = '87a104cdb69049559cda01f158e524bd'
     SPOTIPY_REDIRECT_URI = 'http://localhost:8000/callback'
 
-    type_name = 'album'#t
-    query = 'Lover'#name
+    type_name = t
+    query = name
     limit = 10
     auth = oauth2.SpotifyClientCredentials(
         client_id=SPOTIPY_CLIENT_ID,
