@@ -81,7 +81,7 @@ class Lyrics:
             remote_song_info = self.check_hits()
             if remote_song_info == None:
                 lyrics = None
-                #print(f"Track {i} is not in the Genius database.")
+                print(f"Track {i} is not in the Genius database.")
             else:
                 url = self.get_url()
                 lyrics = self.scrape_lyrics()
