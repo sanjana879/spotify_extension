@@ -1,7 +1,7 @@
 from extension.api_py.load_lyrics import Lyrics
 from extension.api_py.analysis import music_analyze, get_tracks
 from extension.api_py.cleaned_lyrics import clean_lyrics, tokenize
-from extension.api_py.sentiment import sentiment_analysis
+from extension.api_py.sentiment import sentiment_analysis, detailed_emotions
 
 def analyze(uri, type):
     print(uri + " space " + type)
@@ -22,6 +22,7 @@ def analyze(uri, type):
     print(len(tokens))
     percents = []
     percents = sentiment_analysis(cleaned_lyrics)
+    emotions = detailed_emotions(cleaned_lyrics)
 
     return music
 
