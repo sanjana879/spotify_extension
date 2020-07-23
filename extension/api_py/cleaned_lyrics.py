@@ -37,8 +37,9 @@ def clean_lyrics(lyrics):
 
 def tokenize(lyrics):
     translate_table = dict((ord(char), None) for char in string.punctuation)
-    tokens = []
+    tokens = [[]]
     for song in lyrics:
+        print("token ", len(song))
         song = song.translate(translate_table)
         tokens.append(word_tokenize(song))
     #print(tokens)

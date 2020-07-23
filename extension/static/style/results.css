@@ -1,56 +1,54 @@
 .App {
-    background-color: #343434;
-    height: 100%;
-    width: 100%;
-    text-decoration-color: white;
+  background-color: #343434;
+  height: 100%;
+  width: 100%;
+  text-decoration-color: white;
 }
 
 .app-logo {
-    height: 15vmin;
-	width: 15vmin;
-
+  height: 15vmin;
+  width: 15vmin;
 }
 
 .app-header {
-    background-color: blue;
-    max-height: 30vm;
+  background-color: blue;
+  max-height: 30vm;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 .page-title {
-    color: #1ED760;
-    margin-top:-80px;
-    margin-left: 150px;
+  color: #1ed760;
+  text-align: center;
+  margin-left: 400px;
 }
 .title-dash {
-    color: #1ED760;
-    margin-left: 301px;
-    margin-top: -201px;
-    display: inline;
-    font-family: "Palatino";
-    font-size: calc(20px + 2vmin);
-
+  color: #1ed760;
+  margin-left: 301px;
+  margin-top: -201px;
+  display: inline;
+  font-family: "Palatino";
+  font-size: calc(20px + 2vmin);
 }
 .title-dash-2 {
-    color: #1ED760;
-    margin-left: 600px;
-    margin-top: -64px;
-    display: inline;
-    font-family: "Palatino";
-    font-size: calc(20px + 2vmin);
-
+  color: #1ed760;
+  margin-left: 600px;
+  margin-top: -64px;
+  display: inline;
+  font-family: "Palatino";
+  font-size: calc(20px + 2vmin);
 }
 
 .display-results {
-    margin-top: 40px;
-    color: white;
+  margin-top: 10px;
+  text-align: center;
+  display: inline-block;
+  color: white;
 }
 
 .result-item {
-
-    padding: 10px;
+  padding: 10px;
 }

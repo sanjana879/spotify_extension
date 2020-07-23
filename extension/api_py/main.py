@@ -2,12 +2,15 @@ from extension.api_py.load_lyrics import Lyrics
 from extension.api_py.analysis import music_analyze, get_tracks
 from extension.api_py.cleaned_lyrics import clean_lyrics, tokenize
 from extension.api_py.sentiment import sentiment_analysis, detailed_emotions
+from extension.api_py.topic import topic_analyze
+
 
 def analyze(uri, type):
     print(uri + " space " + type)
     #uri = 'spotify:album:2QJmrSgbdM35R67eoGQo4j'
     #type = 'album'
-    results = get_tracks(uri, type)
+    results, title = get_tracks(uri, type)
+    print("title ", title['name'])
     music = music_analyze(results)
     SPOTIPY_CLIENT_ID = 'a0b6691e49e147d8b9d7bfc97ddfd0f8'
     SPOTIPY_CLIENT_SECRET = '87a104cdb69049559cda01f158e524bd'
@@ -24,7 +27,4 @@ def analyze(uri, type):
     percents = sentiment_analysis(cleaned_lyrics)
     emotions = detailed_emotions(cleaned_lyrics)
 
-    return music
-
-
-
+    return music, title['name'], percents, emotions

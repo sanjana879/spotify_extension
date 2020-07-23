@@ -1,35 +1,68 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block page_content %} <link
+rel="stylesheet" type="text/css" href="{% static "style/dashboard.css" %}">
+<div class="App">
+  <div class="row">
+    <li class="span4" style="height: 100px;"><h1>1</h1></li>
+    <div class="col-md-4">
+      <img class="app-logo" src="{% static "img/spotify-logo.png" %}" alt="logo"
+      width="100%" format="PNG" THUMBNAIL_PRESERVE_FORMAT=True>
 
-{% block page_content %}
-    <link rel="stylesheet" type="text/css" href="{% static "style/results.css" %}">
-    <div class="App">
+      <br />
+    </div>
+    <div class="col-md-8">
+      <h1 class="page-title">{{title}} Analysis</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="display-results" style="color: white;">
+        <h3 style="text-align: center; color: #1ed760;">Music</h3>
 
+        <div class="result-item">
+          {% for title, feature in music_features %}
+          <tr>
+            <td>{{ title }} :</t> </td> 
+            <td>{{ feature }}</td>
+            
+            <br />
+          </tr>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+        <div class="lyrics-results" style="color: white;">
+            <h3 style="text-align: center; color: #1ed760;">Lyrics</h3>
+        </div>
         <div class="row">
-            <div class="col-md-5">
-                <img class="app-logo" src="{% static "img/spotify-logo.png" %}" alt="logo" width="100%" format="PNG" THUMBNAIL_PRESERVE_FORMAT=True>
-                <div class="page-title"><h1>{{option}} Analysis </h1></div>
-                <br>
-            <div class="display-results" style="color: white">
-
-
-                    <div class="result-item">
-                <tr><td>{{ name}} </td></tr>
-
-                    </div>
-
-
-            </form>
+            <div class="col-md-4">
+                <div class="sentiment">
+                    <h3 style="color: #1ed760;">Sentiment Analysis</h3>
+                    {% for title, percent in sentiment %}
+                    <tr>
+                        <td>{{ title }} :</t> </td> 
+                        <td>{{ percent }}</td>
+                        
+                        <br />
+                    </tr>
+                    {% endfor %}
+                </div>
             </div>
-            </div>
-            <div class="col-md-5">
-                <h1 style="color: #1ED760"> {{ title }}</h1>
-
-
+            <div class="col-md-4">
+                <h3 style="color: #1ed760;">Mood Analysis</h3>
+                {% for title, percent in moods %}
+                    <tr>
+                        <td>{{ title }} :</t> </td> 
+                        <td>{{ percent }}</td>
+                        
+                        <br />
+                    </tr>
+                    {% endfor %}
             </div>
         </div>
         </div>
     </div>
+  </div>
+</div>
 
 {% endblock %}
-

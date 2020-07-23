@@ -4,7 +4,9 @@ from spotipy import oauth2
 SPOTIPY_CLIENT_ID = 'a0b6691e49e147d8b9d7bfc97ddfd0f8'
 SPOTIPY_CLIENT_SECRET = '87a104cdb69049559cda01f158e524bd'
 SPOTIPY_REDIRECT_URI = 'http://localhost:8000/callback'
-global num_tracks;
+global num_tracks
+
+
 def get_tracks(uri, type):
     auth = oauth2.SpotifyClientCredentials(
         client_id=SPOTIPY_CLIENT_ID,
@@ -15,7 +17,8 @@ def get_tracks(uri, type):
     spotify = spotipy.Spotify(auth=token)
     # get all uris of songs in *album*
     if (type == 'album'):
-        return spotify.album_tracks(uri, limit=50, offset=0, market=None)
+        return spotify.album_tracks(uri, limit=50, offset=0, market=None), spotify.album(uri)
+
 
 def music_analyze(results):
     auth = oauth2.SpotifyClientCredentials(
@@ -38,14 +41,14 @@ def music_analyze(results):
 
     tracks.extend(results['items'])
     track_uris = []
-    for i,track in enumerate(tracks):
+    for i, track in enumerate(tracks):
         track_uri = track['uri']
         track_uris.append(track_uri)
         print(track_uri)
     features = spotify.audio_features(track_uris)
-    global num_tracks;
+    global num_tracks
     num_tracks = len(features)
-    num = 0;
+    num = 0
 
     for track in features:
         acousticness += track['acousticness']
@@ -57,11 +60,10 @@ def music_analyze(results):
         speech += track['speechiness']
         positivity += track['valence']
 
-
         num += 1
 
     final = [0] * 10
-    #acousticness
+    # acousticness
     acousticness /= num
     if(acousticness < 0.35):
         final[0] = 'Low'
@@ -69,7 +71,7 @@ def music_analyze(results):
         final[0] = 'Medium'
     else:
         final[0] = 'High'
-    #danceability
+    # danceability
     danceability /= num
     if (danceability < 0.30):
         final[1] = 'Low'
@@ -97,7 +99,7 @@ def music_analyze(results):
     if (instrumental < 0.5):
         final[4] = 'Low'
     else:
-        final[4]= 'High'
+        final[4] = 'High'
 
     loudness /= num
     if (loudness < -20):
@@ -123,9 +125,9 @@ def music_analyze(results):
     else:
         final[7] = 'High'
 
-    #Party
+    # Party
     party = (danceability + energy)/2
-    focusability = (acousticness +instrumental)/2
+    focusability = (acousticness + instrumental)/2
     if (party < 0.5):
         final[8] = 'Low'
     elif (party < 0.8):
@@ -140,6 +142,7 @@ def music_analyze(results):
     else:
         final[9] = 'High'
 
+    titles = ['Acousticness', 'Danceability', 'Energy', 'Liveness', 'Instrumentalness',
+              'Loudness', 'Speechiness', 'Valence', 'Party', 'Focusability']
     print(final)
-    return final;
-
+    return zip(titles, final)
