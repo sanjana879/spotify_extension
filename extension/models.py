@@ -10,3 +10,7 @@ class Results(models.Model):
     name = models.CharField(max_length=30)
     artist = models.CharField(max_length=30)
     #img = models.CharField(max_length=100)
+
+class Emotion(models.Model):
+    name = models.CharField(max_length=30)
+    count = models.PositiveIntegerField()

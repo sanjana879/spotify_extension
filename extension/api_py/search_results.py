@@ -23,7 +23,7 @@ def search_res(t,name):
     images = []
     ids = []
     if type_name == 'album' or type_name == 'Album':
-        for i in range(0,7):
+        for i in range(0,len(results['albums']['items'])):
             artists.append(results['albums']['items'][i]['artists'][0]['name'])
             names.append(results['albums']['items'][i]['name'])
             ids.append(results['albums']['items'][i]['uri'])

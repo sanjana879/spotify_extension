@@ -4,7 +4,7 @@ from extension import views
 from django.views.generic import TemplateView
 urlpatterns = [
     #url(r'^results/$', views.SearchOptions.as_view()),
-    url(r'^$', views.choose),
+    url(r'^$', views.home_page),
     url(r'^results/$', views.search),  # Add this /about/ route
     url(r'^dashboard/$',views.choose),
 ]

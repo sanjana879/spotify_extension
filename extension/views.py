@@ -76,13 +76,14 @@ def choose(request):
     if request.method == 'GET':
         form = ResultForm(request.GET)
 
-    # if form.is_valid():
-        #val = form.cleaned_data.get("btn")
+    if form.is_valid():
+        val = form.cleaned_data.get("btn")
         # print(type_option)
-        val = 'spotify:album:2QJmrSgbdM35R67eoGQo4j'
+        #val = 'spotify:album:2QJmrSgbdM35R67eoGQo4j'
         type_option = 'album'
-        music_features, title, sentiment, moods = analyze(val, type_option)
-        return render(request, 'dashboard.html', {'music_features': music_features, 'title': title, 'sentiment': sentiment, 'moods': moods})
+        music_features, title, sentiment, moods, wordcloud = analyze(val, type_option)
+
+        return render(request, 'dashboard.html', {'music_features': music_features, 'title': title, 'sentiment': sentiment, 'moods': mood})
     # else:
         #form = ResultForm()
     # return render(request, 'dashboard.html', locals())

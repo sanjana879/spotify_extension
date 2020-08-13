@@ -36,7 +36,7 @@ rel="stylesheet" type="text/css" href="{% static "style/dashboard.css" %}">
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="sentiment">
+                <div class="display-results">
                     <h3 style="color: #1ed760;">Sentiment Analysis</h3>
                     {% for title, percent in sentiment %}
                     <tr>
@@ -49,17 +49,20 @@ rel="stylesheet" type="text/css" href="{% static "style/dashboard.css" %}">
                 </div>
             </div>
             <div class="col-md-4">
+            <div class="display-results" class="mood">
                 <h3 style="color: #1ed760;">Mood Analysis</h3>
-                {% for title, percent in moods %}
+                    {% for key, value in moods.items %}
                     <tr>
-                        <td>{{ title }} :</t> </td> 
-                        <td>{{ percent }}</td>
-                        
+                        <td>{{ key }} :</t> </td>
+                        <td>{{ value }} :</t> </td>
+
                         <br />
                     </tr>
                     {% endfor %}
             </div>
+            </div>
         </div>
+        <img src="{{ wordcloud }}" />
         </div>
     </div>
   </div>

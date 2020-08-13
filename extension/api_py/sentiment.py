@@ -38,8 +38,13 @@ def detailed_emotions(lyrics):
     text_lyrics = text_lyrics.join(lyrics)
     text_object = NRCLex(text_lyrics)
     scores = text_object.raw_emotion_scores
-    print(scores)
+    freq = text_object.affect_frequencies
+    print(text_object.affect_dict)
+    print(len(lyrics[0]))
+    print(len(lyrics[1]))
+    print(len(lyrics[2]))
+    print(freq)
     # 'anticip': 1471, 'positive': 1671, 'negative': 1622, 'sadness': 1496, 'disgust': 1507, 'joy': 1520, 'anger': 1481, 'surprise': 1385, 'fear': 1532, 'trust':
     emotions = ('anticipation', 'positive', 'negative', 'sadness',
                 'disgust', 'joy', 'anger', 'surprise', 'fear', 'trust')
-    return scores
+    return (scores)

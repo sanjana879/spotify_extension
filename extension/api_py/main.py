@@ -11,6 +11,7 @@ def analyze(uri, type):
     #type = 'album'
     results, title = get_tracks(uri, type)
     print("title ", title['name'])
+    
     music = music_analyze(results)
     SPOTIPY_CLIENT_ID = 'a0b6691e49e147d8b9d7bfc97ddfd0f8'
     SPOTIPY_CLIENT_SECRET = '87a104cdb69049559cda01f158e524bd'
@@ -26,5 +27,6 @@ def analyze(uri, type):
     percents = []
     percents = sentiment_analysis(cleaned_lyrics)
     emotions = detailed_emotions(cleaned_lyrics)
+
 
     return music, title['name'], percents, emotions
